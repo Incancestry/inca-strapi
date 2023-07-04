@@ -2,6 +2,51 @@ module.exports = ({ env }) => ({
   // "google-auth": {
   //   enabled: true,
   // },
+
+  "fuzzy-search": {
+    enabled: true,
+    config: {
+      contentTypes: [
+        {
+          uid: "api::product.product",
+          modelName: "product",
+          transliterate: true,
+          fuzzysortOptions: {
+            characterLimit: 300,
+            threshold: -600,
+            limit: 10,
+            keys: [
+              {
+                name: "title",
+                weight: 100,
+              },
+              {
+                name: "description",
+                weight: -100,
+              },
+            ],
+          },
+        },
+        {
+          uid: "api::variant.variant",
+          modelName: "variant",
+          fuzzysortOptions: {
+            characterLimit: 500,
+            keys: [
+              {
+                name: "size",
+                weight: 200,
+              },
+              {
+                name: "description",
+                weight: -200,
+              },
+            ],
+          },
+        },
+      ],
+    },
+  },
   "import-export-entries": {
     enabled: true,
   },
