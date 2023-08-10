@@ -35,7 +35,7 @@
     "variants": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::variant.variant",
+      "target": "api::test.test",
       "mappedBy": "product"
     }
   }
